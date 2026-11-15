@@ -6,69 +6,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NEXORA</title>
 <style>
-*{box-sizing:border-box}
-body{
-margin:0;
-background:#090d1b;
-color:white;
-font-family:Arial,sans-serif;
-text-align:center;
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #090d1b;
+  color: white;
+  font-family: Arial, sans-serif;
 }
-header{
-padding:28px;
-background:#111a32;
-border-bottom:2px solid #7255ff;
+header {
+  padding: 22px;
+  text-align: center;
+  background: #111a32;
+  border-bottom: 2px solid #7655ff;
 }
-h1{color:#8d78ff;font-size:38px}
-p{color:#c4c8dc}
-main{padding:25px}
-.card{
-background:#151e38;
-border:1px solid #5543a5;
-border-radius:18px;
-padding:22px;
-margin:18px auto;
-max-width:420px;
+h1 { color: #967cff; font-size: 36px; margin: 5px; }
+header p { color: #c4c8dc; }
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #151e38;
+  padding: 15px 5px;
+  position: sticky;
+  top: 0;
 }
-button{
-background:#7655ff;
-color:white;
-border:0;
-border-radius:12px;
-padding:13px 22px;
-font-size:16px;
-margin:6px;
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
 }
-input{
-padding:13px;
-border-radius:10px;
-border:0;
-width:85%;
-margin:8px;
+main { padding: 18px; }
+.card {
+  background: #151e38;
+  border: 1px solid #5543a5;
+  border-radius: 18px;
+  padding: 22px;
+  margin: 18px auto;
+  max-width: 500px;
+  text-align: center;
+}
+h2, h3 { color: #a18cff; }
+p { color: #c4c8dc; line-height: 1.8; }
+button {
+  background: #7655ff;
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 22px;
+  font-size: 16px;
+  margin: 6px;
+}
+input {
+  width: 90%;
+  padding: 13px;
+  margin: 8px;
+  border-radius: 10px;
+  border: 1px solid #5543a5;
+  background: #090d1b;
+  color: white;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
 }
 </style>
 </head>
 <body>
+
 <header>
 <h1>NEXORA</h1>
 <p>عالمك الاجتماعي في مكان واحد</p>
+<button onclick="changeLanguage()">English / العربية</button>
 </header>
+
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#explore">استكشف</a>
+<a href="#create">صناعة المحتوى</a>
+<a href="#profile">حسابي</a>
+</nav>
+
 <main>
-<div class="card">
+<section class="card" id="home">
 <h2>مرحباً بك في NEXORA</h2>
-<p>اكتشف عالم التواصل والإبداع</p>
-<button onclick="alert('أهلاً بك في NEXORA!')">
-ابدأ الآن
-</button>
-</div>
-<div class="card">
-<h3>استكشف</h3>
-<p>اكتشف المحتوى الجديد</p>
-</div>
-<div class="card">
-<h3>صناعة المحتوى</h3>
-<p>شارك أفكارك وإبداعاتك</p>
-</div>
+<p>اكتشف عالم التواصل والإبداع، وشارك أفكارك مع الجميع.</p>
+<button onclick="alert('أهلاً بك في NEXORA!')">ابدأ الآن</button>
+</section>
+
+<section class="card" id="explore">
+<h2>استكشف</h2>
+<p>اكتشف المحتوى الجديد والمنشورات المميزة.</p>
+</section>
+
+<section class="card" id="create">
+<h2>صناعة المحتوى</h2>
+<p>شارك أفكارك وإبداعاتك مع مجتمع NEXORA.</p>
+<input type="text" placeholder="اكتب عنوان منشورك">
+<input type="text" placeholder="اكتب محتواك هنا">
+<button onclick="alert('سيتم تطوير النشر لاحقاً')">إنشاء منشور</button>
+</section>
+
+<section class="card" id="profile">
+<h2>الملف الشخصي</h2>
+<p>مرحباً بك في حسابك على NEXORA.</p>
+<input type="text" placeholder="اسم المستخدم">
+<button onclick="alert('سيتم تطوير الحسابات لاحقاً')">إنشاء حساب</button>
+</section>
 </main>
+
+<footer>
+<p>NEXORA © 2026</p>
+<p>تواصل • إبداع • اكتشاف</p>
+</footer>
+
+<script>
+function changeLanguage() {
+  const isArabic = document.documentElement.lang === "ar";
+  document.documentElement.lang = isArabic ? "en" : "ar";
+  document.documentElement.dir = isArabic ? "ltr" : "rtl";
+  alert(isArabic ? "English mode selected" : "تم اختيار العربية");
+}
+</script>
+
 </body>
 </html>
+
