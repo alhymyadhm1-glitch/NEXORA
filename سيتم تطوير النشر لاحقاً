@@ -101,10 +101,17 @@ footer {
 <section class="card" id="create">
 <h2>صناعة المحتوى</h2>
 <p>شارك أفكارك وإبداعاتك مع مجتمع NEXORA.</p>
-<input type="text" placeholder="اكتب عنوان منشورك">
-<input type="text" placeholder="اكتب محتواك هنا">
-<button onclick="alert('سيتم تطوير النشر لاحقاً')">إنشاء منشور</button>
+<input id="postTitle" type="text" placeholder="اكتب عنوان منشورك">
+<textarea id="postContent" placeholder="اكتب محتواك هنا"></textarea>
+<button onclick="createPost()">إنشاء منشور</button>
+<div id="posts"></div>
 </section>
+
+
+
+
+
+
 
 <section class="card" id="profile">
 <h2>الملف الشخصي</h2>
@@ -126,8 +133,47 @@ function changeLanguage() {
   document.documentElement.dir = isArabic ? "ltr" : "rtl";
   alert(isArabic ? "English mode selected" : "تم اختيار العربية");
 }
-</script>
 
+function createPost() {
+  const title = document.getElementById("postTitle").value.trim();
+  const content = document.getElementById("postContent").value.trim();
+
+  if (!title || !content) {
+    alert("اكتب عنوان المنشور ومحتواه");
+    return;
+  }
+
+  const posts = JSON.parse(localStorage.getItem("nexoraPosts") || "[]");
+  posts.unshift({ title, content });
+  localStorage.setItem("nexoraPosts", JSON.stringify(posts));
+
+  showPosts();
+  document.getElementById("postTitle").value = "";
+  document.getElementById("postContent").value = "";
+  alert("تم نشر منشورك بنجاح");
+}
+
+function showPosts() {
+  const posts = JSON.parse(localStorage.getItem("nexoraPosts") || "[]");
+  const container = document.getElementById("posts");
+  container.innerHTML = "";
+
+  posts.forEach(post => {
+    const article = document.createElement("article");
+    const heading = document.createElement("h3");
+    const paragraph = document.createElement("p");
+
+    heading.textContent = post.title;
+    paragraph.textContent = post.content;
+
+    article.append(heading, paragraph);
+    container.appendChild(article);
+  });
+}
+
+showPosts();
+</script>
 </body>
 </html>
+
 
